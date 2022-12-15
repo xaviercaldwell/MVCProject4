@@ -1,0 +1,19 @@
+﻿@model Disk
+@{
+    ViewBag.Title = "Delete Disk";
+
+}
+
+<h2>Confirm Deletion</h2>
+
+<h3>Name: @Model.DiskName</h3>
+<h3>Genre: @ViewBag.Genre</h3>
+<h3>Type: @ViewBag.Type</h3>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="DiskID" />
+
+    <button type="submit" class="btn btn-primary">Delete</button>
+    <a asp-controller="Disk" asp-action="Index" class="btn btn-primary">Cancel</a>
+</form>
+

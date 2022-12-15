@@ -1,0 +1,53 @@
+﻿@model List<Disk>
+@{
+    ViewBag.Title = "DiskInventory";
+}
+
+<h1>Index</h1>
+<a asp-action="Add" class="btn btn-dark mr-2">Add a Disk</a>
+
+<div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>ReleaseDate DD/MM/YYYY</th>
+                <th>Genre</th>
+                <th>Status</th>
+                <th>DiskType</th>
+            </tr>
+        </thead>
+
+
+        @foreach (var disk in Model)
+        {
+            <tr>
+                <td>@disk.DiskID</td>
+                <td>@disk.DiskName</td>
+                <td>@disk.ReleaseDate.ToString("dd MM yyyy")</td>
+                <td>@disk.Genre.Description</td>
+                <td>@disk.Status.Description</td>
+                <td>@disk.DiskType.Description</td>
+                <td>
+                    <a class="text-light text-decoration-none" asp-controller="Disk" asp-action="Edit"
+                       asp-route-id="@disk.DiskID"
+                       asp-route-slug="@disk.Slug">
+                        <button class=" btn btn-dark mr-2">
+                            Edit
+
+                        </button>
+                    </a>
+                    <a class="text-light text-decoration-none" asp-controller="Disk" asp-action="Delete"
+                       asp-route-id="@disk.DiskID"
+                       asp-route-slug="@disk.Slug">
+                        <button class=" btn btn-dark mr-2">
+                            Delete
+
+                        </button>
+                    </a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>

@@ -1,0 +1,40 @@
+﻿@model Borrower
+
+@{
+    ViewData["Title"] = "AddBorrower";
+}
+
+
+
+<h2 class="p-2">Add Borrower</h2>
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+<form asp-action="Add" method="post">
+    <div class="form-group">
+        <label asp-for="LastName">Enter Last Name</label>
+        <input asp-for="LastName" type="text" class="form-control" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="FirstName"></label>
+        <input asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="MiddleName"></label>
+        <input asp-for="MiddleName" class="form-control" />
+        <span asp-validation-for="MiddleName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PhoneNumber"></label>
+        <input asp-for="PhoneNumber" class="form-control" />
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+    </div>
+
+    <input type="hidden" asp-for="BorrowerID" />
+
+    <button type="submit" class="btn btn-dark mr-2">Add</button>
+    <a asp-action="Index" class="btn btn-dark">Cancel</a>
+</form>
+

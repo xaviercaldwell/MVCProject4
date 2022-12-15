@@ -1,0 +1,51 @@
+﻿@model List<Borrower>
+@{
+    ViewBag.Title = "Borrowers";
+}
+
+<h1>Index</h1>
+<a asp-action="Add" class="btn btn-dark mr-2">Add a Borrower</a>
+<div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>First</th>
+                <th>Middle</th>
+                <th>Last</th>
+                <th>Phone</th>
+                <th></th>
+
+            </tr>
+        </thead>
+
+
+        @foreach (var borrower in Model)
+        {
+            <tr>
+                <td>@borrower.FirstName</td>
+                <td>@borrower.MiddleName</td>
+                <td>@borrower.LastName</td>
+                <td>@borrower.PhoneNumber</td>
+                <td>
+                    <a class="text-light text-decoration-none" asp-controller="Borrower" asp-action="Edit"
+                       asp-route-id="@borrower.BorrowerID"
+                       asp-route-slug="@borrower.Slug">
+                        <button class=" btn btn-dark mr-2">
+                            Edit
+
+                        </button>
+                    </a>
+                    <a class="text-light text-decoration-none" asp-controller="Borrower" asp-action="Delete"
+                       asp-route-id="@borrower.BorrowerID"
+                       asp-route-slug="@borrower.Slug">
+                        <button class=" btn btn-dark mr-2">
+                            Delete
+
+                        </button>
+                    </a>
+                </td>
+
+            </tr>
+        }
+    </table>
+</div>
